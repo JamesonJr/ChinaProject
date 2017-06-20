@@ -7,15 +7,33 @@
 //
 
 #import "Categories.h"
+#import "CustomCategoryCell.h"
 
 @interface Categories ()
 
 @end
 
-@implementation Categories
+@implementation Categories {
+    NSMutableArray *categories;
+    NSDictionary *dictionary;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"Categories";
+    categories = [[NSMutableArray alloc] init];
+    for (int i = 1; i <=5; i++)
+    {
+        dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                      [NSString stringWithFormat: @"Cell #%ld", [categories count]], @"title",
+                      [NSString stringWithFormat:@"%ld.png", ([categories count]%3)+1], @"image",
+                      nil];
+        [categories addObject:dictionary];
+    }
+    //Register CustomCell
+    
+    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([CustomCategoryCell class]) bundle:nil] forCellReuseIdentifier: NSStringFromClass([CustomCategoryCell class])];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -32,24 +50,43 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+
+    //Пока для примера 1 дальше поменяю, я пока не разобрался что это
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    
+    return [categories count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    //Тут подставляем нашу кастомную ячейку
+    CustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier: NSStringFromClass([CustomCategoryCell class]) forIndexPath:indexPath];
+    
+    
+    NSDictionary *tmp = [categories objectAtIndex:indexPath.row];
+    
+    cell.cellTitle.text = [NSMutableString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
+    cell.cellImage.image = [UIImage imageNamed: [NSMutableString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+    //NSStringFromClass return Class string name
     
     // Configure the cell...
-    
+    /*NSInteger buffer = indexPath.row%3;
+    cell.cellTitle.text = [NSString stringWithFormat:@"Cell #%ld", indexPath.row];
+    cell.cellImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.png", buffer+1]];*/
     return cell;
 }
-*/
+
+//Меняем высоту ячейки
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 150.0f;
+}
 
 /*
 // Override to support conditional editing of the table view.
