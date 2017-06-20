@@ -15,9 +15,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="79.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sM-B1-Gq0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ssi-bp-FUH">
+                        <rect key="frame" x="139" y="29" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ssi-bp-FUH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="F7a-66-y9e"/>
+                    <constraint firstItem="Ssi-bp-FUH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="131" id="e3Y-cD-kvr"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="subcategoryCellImage" destination="1sM-B1-Gq0" id="I9v-G6-Z9I"/>
+                <outlet property="subcategoryCellTitle" destination="Ssi-bp-FUH" id="hwG-pb-XBb"/>
+            </connections>
             <point key="canvasLocation" x="25" y="70"/>
         </tableViewCell>
     </objects>

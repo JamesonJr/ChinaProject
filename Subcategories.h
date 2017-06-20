@@ -10,4 +10,6 @@
 
 @interface Subcategories : UITableViewController
 
+@property (nonatomic, strong) NSString *subcategoriesName;
+
 @end

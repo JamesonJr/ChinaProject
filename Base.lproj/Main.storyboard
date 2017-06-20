@@ -58,15 +58,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="oBb-Te-r60">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="oBb-Te-r60" customClass="CustomCategoryCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oBb-Te-r60" id="rHp-aQ-Ydb">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="CustomCategoryCell"/>
                                 <connections>
-                                    <segue destination="qsp-1D-N5O" kind="show" identifier="arrayDetail" id="f0Q-wE-wfY"/>
+                                    <segue destination="qsp-1D-N5O" kind="show" identifier="showArrayDetail" id="f0Q-wE-wfY"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -79,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34C-5x-rvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1526" y="125"/>
+            <point key="canvasLocation" x="1525.5999999999999" y="124.58770614692655"/>
         </scene>
         <!--Subcategories-->
         <scene sceneID="dGh-Nu-oCd">
@@ -90,7 +91,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="OwI-QN-8C8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="subcategoryCell" rowHeight="100" id="OwI-QN-8C8" customClass="CustomSubcategoryCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OwI-QN-8C8" id="sG0-el-uzg">
