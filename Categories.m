@@ -36,7 +36,7 @@
     
     [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([CustomCategoryCell class]) bundle:nil] forCellReuseIdentifier: NSStringFromClass([CustomCategoryCell class])];
     
-    //[self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([CustomCategoryCell class]) bundle:nil] forCellReuseIdentifier: @"categoriesIdentifier"];
+    //[self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([CustomCategoryCell class]) bundle:nil] forCellReuseIdentifier: [self classString]];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -70,25 +70,36 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    //static NSString *simpleTableIdentifier = @"categoriesIdentifier";
+    NSString *simpleTableIdentifier = [[NSString alloc] init];
+    simpleTableIdentifier = [self classString];
     
     //Тут подставляем нашу кастомную ячейку
     //CustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
     
     //CustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier forIndexPath:indexPath];
     
-    CustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier: NSStringFromClass([CustomCategoryCell class]) forIndexPath:indexPath];
+    //CustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier: NSStringFromClass([CustomCategoryCell class]) forIndexPath:indexPath];
+    
+    CustomCategoryCell *cell= (CustomCategoryCell *)[tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
     //NSLog(@"%@", [self classString]);
     NSDictionary *tmp = [categories objectAtIndex:indexPath.row];
     
     cell.cellTitle.text = [NSString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
-    cell.cellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    
+    // Second atempt
+    //cell.backgroundView = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+    
+    // First atempt
+    //cell.cellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
     //NSStringFromClass return Class string name
     
     // Configure the cell...
     NSInteger buffer = indexPath.row%3;
     cell.cellTitle.text = [NSString stringWithFormat:@"Cell #%ld", indexPath.row];
-    cell.cellImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.png", buffer+1]];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed:[NSString stringWithFormat:@"%ld.png", buffer+1]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+    
+    //cell.cellImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld.png", buffer+1]];
     return cell;
 }
 
@@ -140,8 +151,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
-    if ([segue.identifier isEqualToString: @"showArrayDetail"])
+    if ([segue.identifier isEqualToString: @"showSubcategories"])
     {
         //NSLog(@"Условие перехода выполнилось");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

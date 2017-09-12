@@ -10,6 +10,5 @@
 
 @interface CustomSubcategoryCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *subcategoryCellTitle;
-@property (weak, nonatomic) IBOutlet UIImageView *subcategoryCellImage;
 
 @end

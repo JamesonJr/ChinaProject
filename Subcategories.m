@@ -129,31 +129,33 @@
     {
         NSDictionary *tmp = [cell0 objectAtIndex:indexPath.row];
         cell.subcategoryCellTitle.text = [NSString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
-        cell.subcategoryCellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
+        
+        //cell.subcategoryCellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
     }
     if ([_subcategoriesName isEqualToString: @"Cell #1"])
     {
         NSDictionary *tmp = [cell1 objectAtIndex:indexPath.row];
         cell.subcategoryCellTitle.text = [NSString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
-        cell.subcategoryCellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     }
     if ([_subcategoriesName isEqualToString: @"Cell #2"])
     {
         NSDictionary *tmp = [cell2 objectAtIndex:indexPath.row];
         cell.subcategoryCellTitle.text = [NSString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
-        cell.subcategoryCellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     }
     if ([_subcategoriesName isEqualToString: @"Cell #3"])
     {
         NSDictionary *tmp = [cell3 objectAtIndex:indexPath.row];
         cell.subcategoryCellTitle.text = [NSString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
-        cell.subcategoryCellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     }
     if ([_subcategoriesName isEqualToString: @"Cell #4"])
     {
         NSDictionary *tmp = [cell4 objectAtIndex:indexPath.row];
         cell.subcategoryCellTitle.text = [NSString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
-        cell.subcategoryCellImage.image = [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]];
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[ [UIImage imageNamed: [NSString stringWithFormat: @"%@", [tmp objectForKey: @"image"]]] stretchableImageWithLeftCapWidth:0.0 topCapHeight:5.0] ];
     }
     
     return cell;
@@ -161,7 +163,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 85.0f;
+    return 80.0f;
 }
 
 /*
