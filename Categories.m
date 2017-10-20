@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = @"Categories";
     categories = [[NSMutableArray alloc] init];
     for (int i = 1; i <=5; i++)
@@ -34,7 +33,7 @@
     }
     //Register CustomCell
     
-    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([CustomCategoryCell class]) bundle:nil] forCellReuseIdentifier: NSStringFromClass([CustomCategoryCell class])];
+    [self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([CustomCategoryCell class]) bundle:nil] forCellReuseIdentifier: @"showSubcategory"];
     
     //[self.tableView registerNib: [UINib nibWithNibName: NSStringFromClass([CustomCategoryCell class]) bundle:nil] forCellReuseIdentifier: [self classString]];
     
@@ -71,7 +70,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *simpleTableIdentifier = [[NSString alloc] init];
-    simpleTableIdentifier = [self classString];
+    simpleTableIdentifier = @"showSubcategory";
     
     //Тут подставляем нашу кастомную ячейку
     //CustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
@@ -81,7 +80,6 @@
     //CustomCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier: NSStringFromClass([CustomCategoryCell class]) forIndexPath:indexPath];
     
     CustomCategoryCell *cell= (CustomCategoryCell *)[tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
-    //NSLog(@"%@", [self classString]);
     NSDictionary *tmp = [categories objectAtIndex:indexPath.row];
     
     cell.cellTitle.text = [NSString stringWithFormat: @"%@", [tmp objectForKey: @"title"]];
@@ -151,7 +149,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if ([segue.identifier isEqualToString: @"showSubcategories"])
+    NSLog(@"Сука я захожу в этод метод");
+    if ([segue.identifier isEqualToString: @"showSubcategory"])
     {
         //NSLog(@"Условие перехода выполнилось");
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];

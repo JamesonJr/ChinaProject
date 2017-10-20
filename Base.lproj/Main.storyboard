@@ -68,7 +68,7 @@
                                 </tableViewCellContentView>
                                 <accessibility key="accessibilityConfiguration" identifier="CustomCategoryCell"/>
                                 <connections>
-                                    <segue destination="qsp-1D-N5O" kind="show" identifier="showSubcategories" id="f0Q-wE-wfY">
+                                    <segue destination="qsp-1D-N5O" kind="show" identifier="showSubcategory" id="f0Q-wE-wfY">
                                         <segue key="commit" inheritsFrom="parent" id="e7p-uE-xjm"/>
                                         <segue key="preview" inheritsFrom="commit" id="pi4-0B-wSS"/>
                                     </segue>
